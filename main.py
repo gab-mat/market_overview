@@ -129,6 +129,7 @@ def update_graphs(pathname):
     # Skip updates if not on the correct page
     return dash.no_update, dash.no_update, dash.no_update, dash.no_update
 
+server = app.server
 
 if __name__ == "__main__":
     app.run_server(debug=True)
