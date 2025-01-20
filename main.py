@@ -5,7 +5,7 @@ import plotly.express as px
 import pandas as pd
 import dash_bootstrap_components as dbc
 
-# Sample data for demonstration
+# Sample excel
 sample_data = {
     "Commodity": ["Gold", "Silver", "Oil", "Natural Gas"] * 10,
     "Date": pd.date_range("2023-01-01", periods=40, freq="D"),
@@ -13,7 +13,17 @@ sample_data = {
         1850 + i * 5 for i in range(10)
     ] + [24 + i * 0.5 for i in range(10)] + [75 + i for i in range(10)] + [3.5 + i * 0.1 for i in range(10)],
 }
+
+# load data from the sample excel
+#
+#
+#
+
+
 commodity_df = pd.DataFrame(sample_data)
+
+
+
 
 # External stylesheets
 external_stylesheets = [
