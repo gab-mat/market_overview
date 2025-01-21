@@ -33,8 +33,8 @@ external_stylesheets = [
 ]
 
 # Initialize the app
-app = dash.Dash(__name__, external_stylesheets=external_stylesheets, suppress_callback_exceptions=True)
-app.title = "Commodity Dashboard"
+dash_app = dash.Dash(__name__, external_stylesheets=external_stylesheets, suppress_callback_exceptions=True)
+dash_app.title = "Commodity Dashboard"
 
 # Sidebar layout
 sidebar = html.Div(
@@ -87,10 +87,10 @@ page2_content = html.Div("Page 2 content")
 
 # Main layout
 content = html.Div(id="page-content", style=CONTENT_STYLE)
-app.layout = html.Div([dcc.Location(id="url"), sidebar, content])
+dash_app.layout = html.Div([dcc.Location(id="url"), sidebar, content])
 
 # Callbacks
-@app.callback(
+@dash_app.callback(
     Output("page-content", "children"),
     Input("url", "pathname"),
 )
@@ -108,7 +108,7 @@ def render_page_content(pathname):
     )
 
 
-@app.callback(
+@dash_app.callback(
     [Output("graph1", "figure"), Output("graph2", "figure"), Output("graph3", "figure"), Output("graph4", "figure")],
     Input("url", "pathname"),
 )
@@ -131,9 +131,8 @@ def update_graphs(pathname):
     return dash.no_update, dash.no_update, dash.no_update, dash.no_update
 
 
-app = Dash(__name__)
-server = app.server
+#dash_app = Dash(__name__)
+#server = app.server
 
-if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 8050))
-    app.run_server(host="0.0.0.0", port=port)
+if __name__ == '__main__':
+    dash_app.run_server(debug=True)
