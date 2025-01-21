@@ -1,4 +1,5 @@
 import dash
+import os
 from dash import dcc, html
 from dash.dependencies import Output, Input
 import plotly.express as px
@@ -129,7 +130,10 @@ def update_graphs(pathname):
     # Skip updates if not on the correct page
     return dash.no_update, dash.no_update, dash.no_update, dash.no_update
 
+
+app = Dash(__name__)
 server = app.server
 
 if __name__ == "__main__":
-    app.run_server(debug=True)
+    port = int(os.environ.get("PORT", 8050))
+    app.run_server(host="0.0.0.0", port=port)
